@@ -3,11 +3,15 @@ mod handlers;
 
 use actix_web::{web, App, HttpServer};
 
+use dotenv::dotenv;
+
+
 
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
 
+    dotenv().ok();
     std::env::set_var("RUST_LOG", "actix_web=debug");
 
     HttpServer::new(move || {
