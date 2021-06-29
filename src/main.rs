@@ -1,12 +1,18 @@
 
 mod handlers;
 
-use actix_web::{web, App, HttpServer};
+
+extern crate diesel;
+extern crate r2d2;
+extern crate r2d2_diesel;
+
+use actix_web::{dev::ServiceRequest, web, App, Error, HttpServer};
+use diesel::prelude::*;
+use r2d2_diesel::ConnectionManager;
 
 use dotenv::dotenv;
 
-
-
+pub type Pool = r2d2::Pool<ConnectionManager<MysqlConnection>>;
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {

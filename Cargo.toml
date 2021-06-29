@@ -4,6 +4,10 @@ version = "0.1.0"
 authors = ["hodongman <jhd9206@gmail.com>"]
 edition = "2018"
 
+[profile.dev.build-override]
+opt-level=3
+codegen-units=1
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -15,3 +19,11 @@ actix-web = "3.0.0"
 actix-service = "2.0.0"
 
 actix-rt = "1.0.0"
+
+sqlx = { version = "0.5.5", features = ["mysql", "runtime-actix-native-tls"] }
+
+diesel = { version = "1.4.5", features = ["mysql"] }
+
+r2d2 = "0.7.2"
+
+r2d2-diesel = "1.0.0-rc1"
